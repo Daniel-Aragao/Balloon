@@ -1,6 +1,7 @@
 <html>
     <head>
         <title>Balloon</title>
+        <meta charset="UTF-8">
         <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
@@ -16,6 +17,7 @@
         <style>
             body{
                 background-color: #2a2730;
+                color: #2a2730;
             }
             #Menssagem, #Timeout{
                 width: 150px;
@@ -29,6 +31,11 @@
                 padding-right: 5px;
                 padding-left: 5px;
             }
+            .opcao-box{
+                border: 1px solid #2a2730;
+                padding: 5px;
+                margin: 5px;
+            }
         </style>
     </head>
     <body>
@@ -40,48 +47,62 @@
                         Lorem Ipsum
                     </div>
                     <div class="panel-body">
-                        <div>
-                            <div>
-                                <input type="text" placeholder="Menssagem" id="Menssagem" class="form-control">
-                                <input type="text" placeholder="Tempo Limite" id="Timeout" class="form-control">
-                                (msec.)                                
-                                <button id="btn" class="btn btn-primary" type="button" onClick="startballoon()">Cria bal„o</button>
-                                <button id="btn2" class="btn btn-danger" type="button" onClick="reset()">Resetar balıes</button>
-                            </div>
-                            <div>
+                        <div class="col-lg-12">
+                            <input type="text" placeholder="Menssagem" id="Menssagem" class="form-control">
+                            <input type="text" placeholder="Tempo Limite" id="Timeout" class="form-control">
+                            (msec.)                                
+                            <button id="btn" class="btn btn-primary" type="button" onClick="startballoon()">Cria bal√µes</button>
+                            <button id="btn2" class="btn btn-danger" type="button" onClick="reset()">Resetar bal√µes</button>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="opcao-box">
                                 <p>Tipo</p>
                                 <label><input type="radio" name="type" value="primary"><span class="padd">primary</span></label>  
                                 <label><input type="radio" name="type" value="success"><span class="padd">success</span>   </label>
                                 <label><input type="radio" name="type" value="warning"><span class="padd">warning</span>  </label>
                                 <label><input type="radio" name="type" value="info"><span class="padd">info</span></label>
                                 <label><input type="radio" name="type" value="danger"><span class="padd">danger</span></label>
+                                <label><input type="radio" name="type" value="default"><span class="padd">default</span></label>
                             </div>
-                            <div>
-                                <p>Bot„o</p>
+                            <div class="opcao-box">
+                                <p>Bot√£o</p>
                                 <label><input type="radio" name="closebtn" value="true"><span class="padd">Com </span></label>
                                 <label><input type="radio" name="closebtn" value="false"><span class="padd">Sem </span></label>
                             </div>
-                            <div>
-                                <p>PosiÁ„o eixo x Obs.: Resetar</p>
+                            <div class="opcao-box">
+                                <p>Posi√ß√£o eixo x Obs.: Resetar</p>
                                 <label><input type="radio" name="px" value="Top"><span class="padd">Topo </span></label>
-                                <label><input type="radio" name="px" value="Bottom"><span class="padd">RodapÈ </span></label>
+                                <label><input type="radio" name="px" value="Bottom"><span class="padd">Rodap√© </span></label>
                             </div>
-                            <div>
-                                <p>PosiÁ„o eixo y Obs.: Resetar</p>
+                            <div class="opcao-box">
+                                <p>Posi√ß√£o eixo y Obs.: Resetar</p>
                                 <label><input type="radio" name="py" value="Right"><span class="padd">Direita </span></label>
                                 <label><input type="radio" name="py" value="Left"><span class="padd">Esquerda </span></label>
                             </div>
-                            <div>
+                            <div class="opcao-box">
                                 <p>Fechar ao clicar</p>
                                 <label><input type="radio" name="closeclick" value="true"><span class="padd">Ativar </span></label>
                                 <label><input type="radio" name="closeclick" value="false"><span class="padd">Desativar </span></label>                                
                             </div>
 
                         </div>
+                        <div class="col-lg-6">
+                            <div class="opcao-box">
+                                <p>Carregando</p>
+                                <label><input type="radio" name="carregando" value="true"><span class="padd">Ativar </span></label>
+                                <label><input type="radio" name="carregando" value="false"><span class="padd">Desativar </span></label>                                
+                            </div>
+                            <div class="opcao-box">
+                                <p>T√≠tulo</p>
+                                <input type="text" placeholder="T√≠tulo" id="titulo" class="form-control">                               
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
                         <div class="jumbotron">
                             <h1>Simples alertas javascript</h1>
-                            <p>InÌcio: 28/07/2016</p>
-                            <p>Daniel Arag„o Abreu Filho</p>
+                            <p>1.0.0: 28/07/2016</p>
+                            <p>Atual 1.0.1: 29/072016</p>
+                            <p>Daniel Arag√£o Abreu Filho</p>
                         </div>
                         <div>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod lobortis rhoncus. Sed non tortor vel ipsum porttitor rhoncus sit amet quis odio. Cras semper at lorem quis rutrum. Vestibulum finibus dui eros, vel rutrum ipsum convallis a. Donec imperdiet odio      sagittis est cursus, sit amet fringilla lorem scelerisque. Vivamus ac condimentum quam. Praesent eget pharetra nibh, eget condimentum nibh. Cras eget lacus a arcu dignissim pretium sed sed libero.</p>
@@ -101,8 +122,10 @@
                 option.position_x = $('input[name=px]:checked').val();
                 option.position_y = $('input[name=py]:checked').val();
                 option.timeOut = $('#Timeout').val();
-                option.clickToClose = $('input[name=closeclick]:checked').val();;
-                option.type = $('input[name=type]:checked').val()
+                option.clickToClose = $('input[name=closeclick]:checked').val();
+                option.type = $('input[name=type]:checked').val();
+                option.carregando = $('input[name=carregando]:checked').val();
+                option.titulo = $('#titulo').val();
 
                 balloon($('#Menssagem').val(), null, option);                
             }

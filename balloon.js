@@ -117,8 +117,9 @@ function AdicionarClasses(btype, option, balloon) {
             balloon.addClass("balloon-danger");
             break;
         case "primary":
-        default:
             balloon.addClass("balloon-primary");
+            break;
+        default:
             break;
     }
 }
