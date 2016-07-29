@@ -10,7 +10,7 @@ var default_options = { // for no option selected
 
 
 function balloon(msg, btype, options) {
-    if (typeof options == "undefined") {
+    if (typeof options == "undefined" || options == null) {
         options = default_options;
     }
 
@@ -29,7 +29,7 @@ function balloon(msg, btype, options) {
 
 
 
-    AdicionarClasses(btype, ballon);
+    AdicionarClasses(btype, options, ballon);
     message.text(msg);
     AdicionarCloseBtn(options, ballon)
     ballon.append(message);
@@ -40,12 +40,13 @@ function balloon(msg, btype, options) {
     container.append(ballon);
     return ballon;
 }
+
 function ClicarFechar(options, ballon) {
     if (typeof options.clickToClose == "undefined") {
         options.clickToClose = default_options.clickToClose;
     }
 
-    if (options.clickToClose) {        
+    if (options.clickToClose == true || options.clickToClose == "true") {       
         ballon.on('click', function () {
             ballon.remove();
         })
@@ -69,7 +70,7 @@ function AdicionarCloseBtn(opt, ballon) {
         opt.closeButton = default_options.closeButton;
     }
 
-    if (opt.closeButton) {
+    if (opt.closeButton == true || opt.closeButton == "true") {
         var btn = $('<div class="closeBtn">x</div>');
         
         btn.on('click', function () {
@@ -82,7 +83,7 @@ function AdicionarCloseBtn(opt, ballon) {
 
 function TempoLimite(options, ballon) {
     if (typeof options.timeOut == "undefined") {
-        options = default_options;
+        options.timeOut = default_options.timeOut;
     }
 
     if (options.timeOut != 0) {
@@ -92,9 +93,13 @@ function TempoLimite(options, ballon) {
     }
 }
 
-function AdicionarClasses(btype, balloon) {
-    if (typeof btype == "undefined") {
-        btype = default_options.type;
+function AdicionarClasses(btype, option, balloon) {
+    if (typeof btype == "undefined" || btype == null) {
+        if (typeof option.type == "undefined") {
+            btype = default_options.type;            
+        } else {
+            btype = option.type;
+        }
     } 
 
 
