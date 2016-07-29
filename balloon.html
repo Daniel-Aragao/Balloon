@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <title>Balloon</title>
+        <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" 
+            crossorigin="anonymous">
+        </script>
+        <link rel="icon" href="favicon.ico">
+        <link rel="stylesheet" href="balloon.css">
+        <style>
+            body{
+                background-color: #2a2730;
+            }
+            #Menssagem{
+                width: 150px;
+                padding:10px;
+                display: inline;
+            }
+            #btn{
+                margin-bottom:3px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="col-lg-8 col-lg-offset-2">
+        <h1 style="color:white"><b>Bem-vindo ao Balloon</b></h1>
+            <div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Lorem Ipsum
+                    </div>
+                    <div class="panel-body">
+                        <div>
+                            <input type="text" id="Menssagem" class="form-control">
+                            <button id="btn" class="btn btn-primary" type="button" onClick="balloon($('#Menssagem').val(),$('#Menssagem').val())">Cria balão</button>
+                        </div>
+                        <div class="jumbotron">
+                            <h1>Simples alertas javascript</h1>
+                            <p>Início: 28/07/2016</p>
+                            <p>Daniel Aragão Abreu Filho</p>
+                        </div>
+                        <div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod lobortis rhoncus. Sed non tortor vel ipsum porttitor rhoncus sit amet quis odio. Cras semper at lorem quis rutrum. Vestibulum finibus dui eros, vel rutrum ipsum convallis a. Donec imperdiet odio      sagittis est cursus, sit amet fringilla lorem scelerisque. Vivamus ac condimentum quam. Praesent eget pharetra nibh, eget condimentum nibh. Cras eget lacus a arcu dignissim pretium sed sed libero.</p>
+                            <p>Nam viverra lorem massa, nec finibus sapien fringilla vel. Ut porttitor placerat porttitor. Vestibulum sed blandit dui, a ullamcorper dolor. Aliquam tempus tristique sagittis. In finibus metus nec lacinia venenatis. Sed eu congue felis, et tempor turpis. Maecenas sagittis rutrum ex ac congue. Ut et massa eros.</p>      
+                            <p>Nullam vitae magna faucibus, mattis massa at, euismod mi. Ut consequat quam ut quam convallis auctor. Ut sodales blandit felis, nec interdum est feugiat id. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam erat volutpat. Mauris elementum aliquam dui, ac blandit sem fermentum in. Quisque ultrices, neque ac accumsan mollis, sapien leo rutrum urna, id suscipit ante sapien eget orci. Morbi commodo felis id metus accumsan rutrum. Mauris neque orci, mattis ac velit non, blandit dignissim neque. Mauris et suscipit nunc.</p>                      
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <script src="balloon.js"></script>
+    </body>
+</html>

@@ -1,0 +1,50 @@
+#balloon-container{
+    display: block;
+    position: fixed;
+    width: 250px;
+    margin: 10px;
+    padding: 10px;
+    z-index: 111111;
+}
+
+.balloon{
+    display: block;
+    border-radius: 3px;
+    background-color: #f5f5f5;
+    margin: 5px;
+    padding: 14px;
+    min-height: 50px;
+    opacity: .8;
+    z-index: 111112;
+}
+
+.balloon :hover{
+    opacity: 1;
+    box-shadow: 0px 0px 10px black;
+}
+
+.balloon-primary{
+    background-color: #337ab7;
+}
+
+.balloon-success{
+    background-color: #5cb85c;
+}
+
+.balloon-info{
+    background-color: #5bc0de;
+}
+
+.balloon-warning{
+    background-color: #f0ad4e;
+}
+
+.balloon-danger{
+    background-color: #d9534f;
+}
+
+.balloon-message{
+    color:white;
+    word-break: keep-all;
+}
+
