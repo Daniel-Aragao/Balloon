@@ -1,40 +1,119 @@
+var container;
+var default_options = { // for no option selected
+    position_x: 'top', //screen position
+    position_y: 'right', //screen position
+    type: 'primary', // bootstrap same types
+    closeButton: false, // no close btn
+    timeOut: 0, //no time out
+    clickToClose: true
+} 
 
 
+function balloon(msg, btype, options) {
+    if (typeof options == "undefined") {
+        options = default_options;
+    }
 
-function balloon(msg, btype) {
-    var container = $("#balloon-container");
-
+    container = $("#balloon-container");
+    
     if (container.length === 0) {
         container = $('<div id="balloon-container"><div>')
+        ContainerPosition(options);
         $('body').append(container);
     }
         
+    
+        
     var ballon = $('<div class="balloon"></div>');
-
     var message = $('<div class="balloon-message"></div>');
-    message.text(msg);
 
+
+
+    AdicionarClasses(btype, ballon);
+    message.text(msg);
+    AdicionarCloseBtn(options, ballon)
     ballon.append(message);
+
+    TempoLimite(options, ballon);
+    ClicarFechar(options, ballon);
+
+    container.append(ballon);
+    return ballon;
+}
+function ClicarFechar(options, ballon) {
+    if (typeof options.clickToClose == "undefined") {
+        options.clickToClose = default_options.clickToClose;
+    }
+
+    if (options.clickToClose) {        
+        ballon.on('click', function () {
+            ballon.remove();
+        })
+    }
+}
+
+function ContainerPosition(opt) {
+    if (typeof opt.position_x == "undefined") {
+        opt.position_x = default_options.position_x;
+    }
+    if (typeof opt.position_y == "undefined") {
+        opt.position_y = default_options.position_y;
+    }
+    
+    container.addClass('balloon-' + opt.position_x)
+    container.addClass('balloon-'+opt.position_y)
+}
+
+function AdicionarCloseBtn(opt, ballon) {
+    if (typeof opt.closeButton == "undefined") {
+        opt.closeButton = default_options.closeButton;
+    }
+
+    if (opt.closeButton) {
+        var btn = $('<div class="closeBtn">x</div>');
+        
+        btn.on('click', function () {
+            ballon.remove(); 
+        });
+
+        ballon.append(btn);
+    }
+}
+
+function TempoLimite(options, ballon) {
+    if (typeof options.timeOut == "undefined") {
+        options = default_options;
+    }
+
+    if (options.timeOut != 0) {
+        setTimeout(function () { 
+            ballon.remove()
+        } ,options.timeOut)
+    }
+}
+
+function AdicionarClasses(btype, balloon) {
+    if (typeof btype == "undefined") {
+        btype = default_options.type;
+    } 
+
 
     switch (btype) {
         case "success":
-            ballon.addClass("balloon-success");
+            balloon.addClass("balloon-success");
             break;
         case "info":
-            ballon.addClass("balloon-info");
+            balloon.addClass("balloon-info");
         break;
         case "warning":
-            ballon.addClass("balloon-warning");
+            balloon.addClass("balloon-warning");
             break;
         case "danger":
-            ballon.addClass("balloon-danger");
+            balloon.addClass("balloon-danger");
             break;
         case "primary":
         default:
-            ballon.addClass("balloon-primary");
+            balloon.addClass("balloon-primary");
             break;
     }
-
-
-    container.append(ballon);
 }

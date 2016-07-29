@@ -38,7 +38,7 @@
                     <div class="panel-body">
                         <div>
                             <input type="text" id="Menssagem" class="form-control">
-                            <button id="btn" class="btn btn-primary" type="button" onClick="balloon($('#Menssagem').val(),$('#Menssagem').val())">Cria balão</button>
+                            <button id="btn" class="btn btn-primary" type="button" onClick="startballoon()">Cria balão</button>
                         </div>
                         <div class="jumbotron">
                             <h1>Simples alertas javascript</h1>
@@ -56,5 +56,17 @@
         </div>
         
         <script src="balloon.js"></script>
+        <script>
+            function startballoon(){
+                var option = {};
+                option.closeButton = true;
+                option.position_x = "top";
+                option.position_y = "right";
+                option.timeOut = 000;
+                option.clickToClose = false;
+
+                balloon($('#Menssagem').val(),$('#Menssagem').val(), option);                
+            }
+        </script>
     </body>
 </html>
