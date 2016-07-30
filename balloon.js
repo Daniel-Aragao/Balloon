@@ -78,21 +78,40 @@ var Balloon = {
         },
 
         TempoLimite: function (ballon) {
-            if (this.configuracao.timeOut != 0) {
+            if (this.configuracao.timeOut != 0 && !Boolean(this.configuracao.carregando)) {
                 
                 setTimeout(function () {
-                    ballon.remove()
+                    this.RemoveBalloon(balloon)
                 }, parseInt(this.configuracao.timeOut))
             }
         },
         AnimarTimeOut: function (balloon) { 
             if (this.configuracao.timeOut != 0) {
-                if (this.configuracao.carregando == true || this.configuracao.carregando == "true") {
+                if (Boolean(this.configuracao.carregando)) {
                     var bar = $('<div class="loading-bar""></div>');
                     balloon.append(bar);
-                    //$(bar).animate({ width: '0' }, parseInt(this.configuracao.timeOut));
+
+                    var time = this.configuracao.timeOut;
+                    var balloonRemover = this.RemoveBalloon;
+
+                    $(bar).animate({ width: '0' }, parseInt(time), function () {
+                        balloonRemover(balloon);
+                    });
+
+                    balloon.on('mouseenter', function () {
+                        $(bar).stop(true);
+                        bar.css('width', '100%')
+                    })
+                    balloon.on('mouseout', function () {
+                        $(bar).animate({ width: '0' }, parseInt(time), function () {
+                            balloonRemover(balloon);
+                        });
+                    })
                 }
             }
+        },
+        RemoveBalloon: function (balloon) {
+            balloon.remove();
         },
 
         AdicionarClasses: function (btype, balloon) {
