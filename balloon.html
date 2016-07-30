@@ -134,7 +134,7 @@
                 option.carregando = $('input[name=carregando]:checked').val();
                 option.titulo = $('#titulo').val();
 
-                balloon($('#Menssagem').val(), null, option);                
+                Balloon.inflate($('#Menssagem').val(), null, option);                
             }
             function reset(){    
                 if ($("#balloon-container").length != 0) {
