@@ -86,3 +86,10 @@
     color: #adadad;
     /*text-shadow: 0 1px 0 #adadad;*/
 }
+
+.loading-bar{
+     height:100%;
+     width:100%;
+     background-color:#000;
+     opacity:0.1
+}

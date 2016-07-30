@@ -21,6 +21,7 @@ var Balloon = {
         this.balloonInflater.ClicarFechar(ballon);
 
         this.balloonInflater.container.append(ballon);
+        this.balloonInflater.AnimarTimeOut(ballon);
         return ballon;
     },
 
@@ -43,7 +44,9 @@ var Balloon = {
             type: 'primary', // bootstrap same types
             closeButton: false, // no close btn
             timeOut: 0, //no time out
-            clickToClose: true
+            clickToClose: true,
+            carregando: true,
+            titulo
         },
 
         configuracao: {},
@@ -76,9 +79,19 @@ var Balloon = {
 
         TempoLimite: function (ballon) {
             if (this.configuracao.timeOut != 0) {
+                
                 setTimeout(function () {
                     ballon.remove()
-                }, this.configuracao.timeOut)
+                }, parseInt(this.configuracao.timeOut))
+            }
+        },
+        AnimarTimeOut: function (balloon) { 
+            if (this.configuracao.timeOut != 0) {
+                if (this.configuracao.carregando == true || this.configuracao.carregando == "true") {
+                    var bar = $('<div class="loading-bar""></div>');
+                    balloon.append(bar);
+                    //$(bar).animate({ width: '0' }, parseInt(this.configuracao.timeOut));
+                }
             }
         },
 
