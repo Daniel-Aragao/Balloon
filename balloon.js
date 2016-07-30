@@ -11,64 +11,53 @@ var default_options = { // for no option selected
 var configuracao = {} 
 
 
-function balloon(msg, btype, options) {
-    if (typeof options == "undefined" || options == null) {
-        options = default_options;
-    }
+function balloon(msg, btype, options) {    
 
-    container = $("#balloon-container");
-    
-    if (container.length === 0) {
-        container = $('<div id="balloon-container"><div>')
-        ContainerPosition(options);
-        $('body').append(container);
-    }
+    SetConfiguration(options);
+
+    CreateContainer();
         
     var ballon = $('<div class="balloon"></div>');
     var message = $('<div class="balloon-message"></div>');
     message.text(msg);
 
-    AdicionarClasses(btype, options, ballon);
-    AdicionarCloseBtn(options, ballon)
+    AdicionarClasses(btype, ballon);
+    AdicionarCloseBtn(ballon)
     ballon.append(message);
 
-    TempoLimite(options, ballon);
-    ClicarFechar(options, ballon);
+    TempoLimite(ballon);
+    ClicarFechar(ballon);
 
     container.append(ballon);
     return ballon;
 }
 
-function ClicarFechar(options, ballon) {
-    if (typeof options.clickToClose == "undefined") {
-        options.clickToClose = default_options.clickToClose;
+function CreateContainer() {
+    container = $("#balloon-container");
+    
+    if (container.length === 0) {
+        container = $('<div id="balloon-container"><div>')
+        ContainerPosition();
+        $('body').append(container);
     }
+}
 
-    if (options.clickToClose == true || options.clickToClose == "true") {       
+function ClicarFechar(ballon) {    
+    if (configuracao.clickToClose == true || configuracao.clickToClose == "true") {       
         ballon.on('click', function () {
             ballon.remove();
         })
     }
 }
 
-function ContainerPosition(opt) {
-    if (typeof opt.position_x == "undefined") {
-        opt.position_x = default_options.position_x;
-    }
-    if (typeof opt.position_y == "undefined") {
-        opt.position_y = default_options.position_y;
-    }
-    
-    container.addClass('balloon-' + opt.position_x)
-    container.addClass('balloon-'+opt.position_y)
+function ContainerPosition() { 
+    container.addClass('balloon-' + configuracao.position_x)
+    container.addClass('balloon-'+configuracao.position_y)
 }
 
-function AdicionarCloseBtn(opt, ballon) {
-    if (typeof opt.closeButton == "undefined") {
-        opt.closeButton = default_options.closeButton;
-    }
-
-    if (opt.closeButton == true || opt.closeButton == "true") {
+function AdicionarCloseBtn(ballon) {
+    
+    if (configuracao.closeButton == true || configuracao.closeButton == "true") {
         var btn = $('<div class="closeBtn">x</div>');
         
         btn.on('click', function () {
@@ -79,25 +68,17 @@ function AdicionarCloseBtn(opt, ballon) {
     }
 }
 
-function TempoLimite(options, ballon) {
-    if (typeof options.timeOut == "undefined") {
-        options.timeOut = default_options.timeOut;
-    }
-
-    if (options.timeOut != 0) {
+function TempoLimite(ballon) {   
+    if (configuracao.timeOut != 0) {
         setTimeout(function () { 
             ballon.remove()
-        } ,options.timeOut)
+        } ,configuracao.timeOut)
     }
 }
 
-function AdicionarClasses(btype, option, balloon) {
+function AdicionarClasses(btype, balloon) {
     if (typeof btype == "undefined" || btype == null) {
-        if (typeof option.type == "undefined") {
-            btype = default_options.type;            
-        } else {
-            btype = option.type;
-        }
+	    btype = configuracao.type; 
     } 
 
 
@@ -123,4 +104,26 @@ function AdicionarClasses(btype, option, balloon) {
         default:
             break;
     }
+}
+
+function SetConfiguration(options) {
+    if (isNullOrUndefined(options)) {
+        options = default_options;
+    }
+
+    for (var attr in default_options) {configuracao[attr] = default_options[attr];} 
+
+    if (default_options != options) {
+        for (var attr in options) {
+            if(!isNullOrUndefined(options[attr])) configuracao[attr] = options[attr];
+        }    
+    }    
+
+}
+
+function isNullOrUndefined(variavel) {
+    if (typeof variavel == "undefined" || !variavel) {
+        return true;
+    }
+    return false;
 }
