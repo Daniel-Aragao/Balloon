@@ -6,7 +6,9 @@ var default_options = { // for no option selected
     closeButton: false, // no close btn
     timeOut: 0, //no time out
     clickToClose: true
-} 
+}
+
+var configuracao = {} 
 
 
 function balloon(msg, btype, options) {
@@ -22,15 +24,11 @@ function balloon(msg, btype, options) {
         $('body').append(container);
     }
         
-    
-        
     var ballon = $('<div class="balloon"></div>');
     var message = $('<div class="balloon-message"></div>');
-
-
+    message.text(msg);
 
     AdicionarClasses(btype, options, ballon);
-    message.text(msg);
     AdicionarCloseBtn(options, ballon)
     ballon.append(message);
 
@@ -118,6 +116,9 @@ function AdicionarClasses(btype, option, balloon) {
             break;
         case "primary":
             balloon.addClass("balloon-primary");
+            break;
+        case "balloon":
+            balloon.addClass("balloon-balloon");
             break;
         default:
             break;

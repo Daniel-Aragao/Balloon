@@ -23,7 +23,7 @@
     width: 250px;
     display: block;
     border-radius: 3px;
-    background-color: #2a2730;
+    /*background-color: #2a2730;*/
     margin: 5px;
     padding: 14px 14px 14px 54px;
     min-height: 50px;
@@ -55,6 +55,10 @@
 
 .balloon-danger{
     background-color: #d9534f;
+}
+
+.balloon-balloon{
+    background-color: #2a2730;
 }
 
 .balloon-message{
