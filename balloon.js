@@ -44,9 +44,9 @@ var Balloon = {
             type: 'primary', // bootstrap same types
             closeButton: false, // no close btn
             timeOut: 0, //no time out
-            clickToClose: true,
-            carregando: true,
-            titulo
+            clickToClose: true, // when click remove ballon
+            carregando: true, // loading bar active
+            titulo: '' // title
         },
 
         configuracao: {},
@@ -78,16 +78,17 @@ var Balloon = {
         },
 
         TempoLimite: function (ballon) {
-            if (this.configuracao.timeOut != 0 && !Boolean(this.configuracao.carregando)) {
-                
+            if (this.configuracao.timeOut != 0 &&
+                (this.configuracao.carregando == false || this.configuracao.carregando == "false")) {
+                var balloonRemover = this.RemoveBalloon;
                 setTimeout(function () {
-                    this.RemoveBalloon(balloon)
+                    balloonRemover(ballon)
                 }, parseInt(this.configuracao.timeOut))
             }
         },
         AnimarTimeOut: function (balloon) { 
             if (this.configuracao.timeOut != 0) {
-                if (Boolean(this.configuracao.carregando)) {
+                if (this.configuracao.carregando == true || this.configuracao.carregando == "true") {
                     var bar = $('<div class="loading-bar""></div>');
                     balloon.append(bar);
 
@@ -99,11 +100,10 @@ var Balloon = {
                     });
 
                     balloon.on('mouseenter', function () {
-                        $(bar).stop(true);
-                        bar.css('width', '100%')
+                        $(bar).stop().animate({width: '100%'}, parseInt(time));
                     })
-                    balloon.on('mouseout', function () {
-                        $(bar).animate({ width: '0' }, parseInt(time), function () {
+                    balloon.on('mouseleave', function () {
+                        $(bar).stop().animate({ width: '0' }, parseInt(time), function () {
                             balloonRemover(balloon);
                         });
                     })
