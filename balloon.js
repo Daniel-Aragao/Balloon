@@ -113,11 +113,17 @@ var Balloon = {
         },
         RemoveBalloon: function (balloon) {
             var config = Balloon.balloonInflater.configuracao.removalAnimation;
+            var cont = Balloon.balloonInflater.container;
 
             if (!toBoolean(config)) {
-                balloon.remove();                
+                $(balloon).remove();
+                
             } else {
                 
+            }
+            
+            if ($(cont).children().length > 0) {
+                $(cont).remove();
             }
         },
 
@@ -152,7 +158,7 @@ var Balloon = {
         },
 
         SetConfiguration: function (options) {
-            if (this.isNullOrUndefined(options)) {
+            if (isNullOrUndefined(options)) {
                 options = this.default_options;
             }
 
@@ -160,17 +166,10 @@ var Balloon = {
 
             if (this.default_options != options) {
                 for (var attr in options) {
-                    if (!this.isNullOrUndefined(options[attr])) this.configuracao[attr] = options[attr];
+                    if (!isNullOrUndefined(options[attr])) this.configuracao[attr] = options[attr];
                 }
             }
 
-        },
-
-        isNullOrUndefined: function (variavel) {
-            if (typeof variavel == "undefined" || !variavel) {
-                return true;
-            }
-            return false;
         }
     },
     success: function (msg, options) {
@@ -200,4 +199,12 @@ function toBoolean(variavel) {
         case "True": case "true": case "TRUE": return true;
         case "False": case "false": case "FALSE": return false;       
     }
+}
+
+
+function isNullOrUndefined(variavel) {
+    if (typeof variavel == "undefined" || !variavel) {
+        return true;
+    }
+    return false;
 }
