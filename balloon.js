@@ -46,15 +46,17 @@ var Balloon = {
             timeOut: 0, //no time out
             clickToClose: true, // when click remove ballon
             carregando: true, // loading bar active
-            titulo: '' // title
+            titulo: '', // title,
+            removalAnimation:false // animate when removed
         },
 
         configuracao: {},
     
         ClicarFechar: function (ballon) {
             if (this.configuracao.clickToClose == true || this.configuracao.clickToClose == "true") {
+                var balloonRemover = this.RemoveBalloon;
                 ballon.on('click', function () {
-                    ballon.remove();
+                    balloonRemover(ballon);
                 })
             }
         },
@@ -68,9 +70,9 @@ var Balloon = {
         
             if (this.configuracao.closeButton == true || this.configuracao.closeButton == "true") {
                 var btn = $('<div class="closeBtn">x</div>');
-            
+                var balloonRemover = this.RemoveBalloon;
                 btn.on('click', function () {
-                    ballon.remove();
+                    balloonRemover(ballon);
                 });
 
                 ballon.append(btn);
@@ -111,7 +113,13 @@ var Balloon = {
             }
         },
         RemoveBalloon: function (balloon) {
-            balloon.remove();
+            var config = Balloon.balloonInflater.configuracao.removalAnimation;
+
+            if (config == false || config == 'false') {
+                balloon.remove();                
+            } else {
+                
+            }
         },
 
         AdicionarClasses: function (btype, balloon) {
