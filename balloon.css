@@ -26,6 +26,8 @@
     /*background-color: #2a2730;*/
     margin: 5px;
     padding: 14px 14px 14px 54px;
+    /*imagem vai ser absolute, e prefere esse padding, 
+    porém sem imagem deveria ser padding: 14px;*/
     min-height: 50px;
     opacity: .8;
     z-index: 111112;
