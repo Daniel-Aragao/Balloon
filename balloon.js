@@ -53,7 +53,7 @@ var Balloon = {
         configuracao: {},
     
         ClicarFechar: function (ballon) {
-            if (this.configuracao.clickToClose == true || this.configuracao.clickToClose == "true") {
+            if (toBoolean(this.configuracao.clickToClose)) {
                 var balloonRemover = this.RemoveBalloon;
                 ballon.on('click', function () {
                     balloonRemover(ballon);
@@ -68,7 +68,7 @@ var Balloon = {
 
         AdicionarCloseBtn: function (ballon) {
         
-            if (this.configuracao.closeButton == true || this.configuracao.closeButton == "true") {
+            if (toBoolean(this.configuracao.closeButton)) {
                 var btn = $('<div class="closeBtn">x</div>');
                 var balloonRemover = this.RemoveBalloon;
                 btn.on('click', function () {
@@ -80,8 +80,7 @@ var Balloon = {
         },
 
         TempoLimite: function (ballon) {
-            if (this.configuracao.timeOut != 0 &&
-                (this.configuracao.carregando == false || this.configuracao.carregando == "false")) {
+            if (this.configuracao.timeOut != 0 && !toBoolean(this.configuracao.carregando)) {
                 var balloonRemover = this.RemoveBalloon;
                 setTimeout(function () {
                     balloonRemover(ballon)
@@ -90,7 +89,7 @@ var Balloon = {
         },
         AnimarTimeOut: function (balloon) { 
             if (this.configuracao.timeOut != 0) {
-                if (this.configuracao.carregando == true || this.configuracao.carregando == "true") {
+                if (toBoolean(this.configuracao.carregando)) {
                     var bar = $('<div class="loading-bar""></div>');
                     balloon.append(bar);
 
@@ -115,7 +114,7 @@ var Balloon = {
         RemoveBalloon: function (balloon) {
             var config = Balloon.balloonInflater.configuracao.removalAnimation;
 
-            if (config == false || config == 'false') {
+            if (!toBoolean(config)) {
                 balloon.remove();                
             } else {
                 
@@ -191,5 +190,14 @@ var Balloon = {
     },
     balloon: function (msg, options) {
         this.inflate(msg, "balloon", options);
+    }
+}
+
+function toBoolean(variavel) {
+    if (variavel === true || variavel === false) return !!variavel;
+
+    switch (variavel) {
+        case "True": case "true": case "TRUE": return true;
+        case "False": case "false": case "FALSE": return false;       
     }
 }
