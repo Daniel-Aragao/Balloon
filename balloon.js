@@ -13,8 +13,9 @@ var Balloon = {
         message.text(msg);
 
         this.balloonInflater.AdicionarClasses(btype, ballon);
-        this.balloonInflater.AdicionarCloseBtn(ballon)
 
+        this.balloonInflater.AdicionarTitle(ballon);        
+        this.balloonInflater.AdicionarCloseBtn(ballon)
         ballon.append(message);
 
         this.balloonInflater.TempoLimite(ballon);
@@ -32,7 +33,7 @@ var Balloon = {
             this.container = $("#balloon-container");
         
             if (this.container.length === 0) {
-                this.container = $('<div id="balloon-container"><div>')
+                this.container = $('<div id="balloon-container"></div>')
                 this.ContainerPosition();
                 $('body').append(this.container);
             }
@@ -111,6 +112,14 @@ var Balloon = {
                 }
             }
         },
+        AdicionarTitle: function (balloon) { 
+            var titulo = this.configuracao.titulo
+            if (titulo) {
+                var element = $('<div class="title-bar"></div>');
+                element.text(titulo);
+                balloon.append(element);
+            }
+        },
         RemoveBalloon: function (balloon) {
             var config = Balloon.balloonInflater.configuracao.removalAnimation;
             var cont = Balloon.balloonInflater.container;
@@ -121,8 +130,8 @@ var Balloon = {
             } else {
                 
             }
-            
-            if ($(cont).children().length > 0) {
+
+            if ($(cont).children().length < 1) {
                 $(cont).remove();
             }
         },
