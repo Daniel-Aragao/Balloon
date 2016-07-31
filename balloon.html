@@ -15,9 +15,9 @@
         <link rel="icon" href="favicon.ico">
         <link rel="stylesheet" href="balloon.css">
         <style>
-            body{
+            body.blackballoon{
                 background-color: #2a2730;
-                color: #2a2730;
+                color: #fff;
             }
             #Menssagem, #Timeout{
                 width: 150px;
@@ -44,11 +44,11 @@
             }
         </style>
     </head>
-    <body>
+    <body class="blackballoon">
         <div class="col-lg-8 col-lg-offset-2">
-        <h1 style="color:white"><b>Bem-vindo ao Balloon</b></h1>
+        <h1 style=""><b>Bem-vindo ao Balloon</b></h1>
         
-            <div>
+            <div style="color:black;">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         Lorem Ipsum
@@ -70,6 +70,7 @@
                                 <label><input type="radio" name="type" value="info"><span class="padd">info</span></label>
                                 <label><input type="radio" name="type" value="danger"><span class="padd">danger</span></label>
                                 <label><input type="radio" name="type" value="balloon"><span class="padd">balloon</span></label>
+                                <input type="button" onClick="$('body').toggleClass('blackballoon')" class="btn btn-info" value="Fundo">                                
                             </div>
                             <div class="opcao-box">
                                 <p>Botão de fechar</p>
