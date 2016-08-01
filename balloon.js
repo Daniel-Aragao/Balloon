@@ -15,8 +15,9 @@ var Balloon = {
         this.balloonInflater.AdicionarClasses(btype, ballon);
 
         this.balloonInflater.AdicionarCloseBtn(ballon)
-        this.balloonInflater.AdicionarTitle(ballon);        
-        ballon.append(message);
+        this.balloonInflater.AdicionarTitle(ballon);
+
+        this.balloonInflater.AdicionarMenssagem(ballon, message);      
 
         this.balloonInflater.TempoLimite(ballon);
         this.balloonInflater.ClicarFechar(ballon);
@@ -48,7 +49,8 @@ var Balloon = {
             clickToClose: true, // when click remove ballon
             carregando: true, // loading bar active
             titulo: '', // title,
-            removalAnimation:false // animate when removed
+            removalAnimation:false, // animate when removed
+            useImage: false
         },
 
         configuracao: {},
@@ -65,6 +67,15 @@ var Balloon = {
         ContainerPosition: function () {
             this.container.addClass('balloon-' + this.configuracao.position_x)
             this.container.addClass('balloon-' + this.configuracao.position_y)
+        },
+
+        AdicionarMenssagem: function (ballon, message){
+            ballon.append(message);
+
+            if(toBoolean(this.configuracao.useImage)){
+                ballon.css("padding", "14px 14px 14px 54px");
+            }
+
         },
 
         AdicionarCloseBtn: function (ballon) {

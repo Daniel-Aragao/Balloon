@@ -104,6 +104,11 @@
                                 <p>Título</p>
                                 <input type="text" placeholder="Título" id="titulo" class="form-control">                               
                             </div>
+                            <div class="opcao-box">
+                                <p>Usar imagem</p>
+                                <label><input type="radio" name="useImage" value=true><span class="padd">Ativar </span></label>
+                                <label><input type="radio" name="useImage" value=false><span class="padd">Desativar </span></label>                      
+                            </div>
                         </div>
                         <div class="clearfix"></div>
                         <div class="jumbotron">
@@ -138,6 +143,7 @@
                 option.type = $('input[name=type]:checked').val();
                 option.carregando = $('input[name=carregando]:checked').val();
                 option.titulo = $('#titulo').val();
+                option.useImage = $('input[name=useImage]:checked').val();
 
                 Balloon.inflate($('#Menssagem').val(), null, option);                
             }
