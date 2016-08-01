@@ -14,8 +14,8 @@ var Balloon = {
 
         this.balloonInflater.AdicionarClasses(btype, ballon);
 
-        this.balloonInflater.AdicionarTitle(ballon);        
         this.balloonInflater.AdicionarCloseBtn(ballon)
+        this.balloonInflater.AdicionarTitle(ballon);        
         ballon.append(message);
 
         this.balloonInflater.TempoLimite(ballon);
