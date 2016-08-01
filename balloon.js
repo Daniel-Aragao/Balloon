@@ -80,12 +80,24 @@ var Balloon = {
             }
         },
 
-        TempoLimite: function (ballon) {
+        TempoLimite: function (balloon) {
             if (this.configuracao.timeOut != 0 && !toBoolean(this.configuracao.carregando)) {
                 var balloonRemover = this.RemoveBalloon;
-                setTimeout(function () {
-                    balloonRemover(ballon)
-                }, parseInt(this.configuracao.timeOut))
+                var tempo = this.configuracao.timeOut;
+
+                var timeout = setTimeout(function () {
+                    balloonRemover(balloon)
+                    }, parseInt(tempo))
+
+                $(balloon).on('mouseenter', function(){
+                    clearTimeout(timeout);
+                });
+
+                $(balloon).on('mouseleave', function(){
+                    timeout = setTimeout(function () {
+                        balloonRemover(balloon)
+                        }, parseInt(tempo));
+                });
             }
         },
         AnimarTimeOut: function (balloon) { 
