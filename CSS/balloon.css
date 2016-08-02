@@ -32,6 +32,10 @@
     opacity: .8;
     z-index: 111112;
     position: relative;
+    
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    background-size: 40px;
 }
 
 .balloon:hover{
@@ -42,6 +46,7 @@
 
 .balloon-primary{
     background-color: #337ab7;
+    
 }
 
 .balloon-success{

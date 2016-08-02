@@ -69,7 +69,8 @@ var Balloon = {
             titulo: '', // title,
             removalAnimation: true, // animate when removed
             addAnimation: true,
-            useImage: false // user image or not
+            useImage: false, // user image or not
+            imageUrl: 'Images/seta.png' // local da imagem
         },
 
         configuracao: {},
@@ -104,6 +105,7 @@ var Balloon = {
 
             if(toBoolean(this.configuracao.useImage)){
                 ballon.css("padding", "14px 14px 14px 54px");
+                ballon.css("background-image", "url("+this.configuracao.imageUrl+")");
             }
 
         },
@@ -224,21 +226,27 @@ var Balloon = {
             switch (btype) {
                 case "success":
                     balloon.addClass("balloon-success");
+                    this.configuracao.imageUrl = 'Images/Correto.png'
                     break;
                 case "info":
                     balloon.addClass("balloon-info");
+                    this.configuracao.imageUrl = 'Images/info.png'
                     break;
                 case "warning":
                     balloon.addClass("balloon-warning");
+                    this.configuracao.imageUrl = 'Images/exclamacao.png'
                     break;
                 case "danger":
                     balloon.addClass("balloon-danger");
+                    this.configuracao.imageUrl = 'Images/errado.png'
                     break;
                 case "primary":
                     balloon.addClass("balloon-primary");
+                    this.configuracao.imageUrl = 'Images/seta.png'
                     break;
                 case "balloon":
                     balloon.addClass("balloon-balloon");
+                    this.configuracao.imageUrl = 'Images/balloon.png'
                     break;
                 default:
                     break;
