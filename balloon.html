@@ -15,8 +15,38 @@
         <link rel="icon" href="favicon.ico">
         <link rel="stylesheet" href="CSS/balloon.css">
         <link rel="stylesheet" href="CSS/Site.css">
+
+        <!-- You can use Open Graph tags to customize link previews.
+        Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
+        <meta property="og:url"           content="http://balloonalerts.azurewebsites.net/" />
+        <meta property="og:type"          content="website" />
+        <meta property="og:title"         content="Balloon alertas" />
+        <meta property="og:description"   content="Alertas javascript " />
+
+
     </head>
     <body class="blackballoon">
+
+        <!-- Load Facebook SDK for JavaScript -->
+        <script>
+            window.fbAsyncInit = function() {
+                FB.init({
+                appId      : '1780906098813688',
+                xfbml      : true,
+                version    : 'v2.7'
+                });
+            };
+
+            (function(d, s, id){
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) {return;}
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/en_US/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        </script>
+
+
         <div class="col-lg-8 col-lg-offset-2">
         <h1 style=""><b>Bem-vindo ao Balloon</b></h1>
         
@@ -24,8 +54,25 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         Balloon
-                        <div class="col-lg-2 pull-right" style="text-align:right;">
-                            <a href="https://github.com/Daniel-Aragao/Balloon.git">
+                        <div class="col-lg-3 pull-right" style="text-align:right;">
+                            <!--Facebook-->
+                            <div
+                                class="fb-like"
+                                data-share="true"
+                                data-width="450"
+                                data-show-faces="true">
+                            </div>
+
+                            <div class="fb-share-button" data-href="http://balloonalerts.azurewebsites.net/" 
+                            data-layout="button" data-size="small" data-mobile-iframe="true" style="display:inline">
+                                <a class="fb-xfbml-parse-ignore" target="_blank" 
+                                    href="https://www.facebook.com/sharer/sharer.php?        
+                                    u=http%3A%2F%2Fballoonalerts.azurewebsites.net%2F&amp;src=sdkpreparse">
+                                    Compartilhar
+                                </a>
+                            </div>
+                            <!--GitHub-->
+                            <a href="https://github.com/Daniel-Aragao/Balloon.git" style="margin-left:5px;">
                                 <img src="Images/GitHub-Mark-32px.png" width="24px" height="24px">
                             </a>                                
                         </div>
