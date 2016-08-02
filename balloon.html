@@ -109,6 +109,16 @@
                                 <label><input type="radio" name="useImage" value=true><span class="padd">Ativar </span></label>
                                 <label><input type="radio" name="useImage" value=false><span class="padd">Desativar </span></label>                      
                             </div>
+                            <div class="opcao-box">
+                                <p>Animação de saída</p>
+                                <label><input type="radio" name="removalAnimation" value=true><span class="padd">Ativar </span></label>
+                                <label><input type="radio" name="removalAnimation" value=false><span class="padd">Desativar </span></label>                      
+                            </div>
+                            <div class="opcao-box">
+                                <p>Animação de entrada</p>
+                                <label><input type="radio" name="addAnimation" value=true><span class="padd">Ativar </span></label>
+                                <label><input type="radio" name="addAnimation" value=false><span class="padd">Desativar </span></label>                      
+                            </div>
                         </div>
                         <div class="clearfix"></div>
                         <div class="jumbotron">
@@ -118,6 +128,7 @@
                             <p>Refatorado 1.1.1: 29/07/2016</p>
                             <p>Loading-bar 1.2.1 30/07/2016</p>
                             <p>Título 1.2.2 31/07/2016</p>
+                            <p>FadeIn/Out 1.2.3 01/08/2016</p>
                             <p>Daniel Aragão Abreu Filho</p>
                         </div>
                         <div>
@@ -144,6 +155,8 @@
                 option.carregando = $('input[name=carregando]:checked').val();
                 option.titulo = $('#titulo').val();
                 option.useImage = $('input[name=useImage]:checked').val();
+                option.removalAnimation = $('input[name=removalAnimation]:checked').val();
+                option.addAnimation = $('input[name=addAnimation]:checked').val(); 
 
                 Balloon.inflate($('#Menssagem').val(), null, option);                
             }

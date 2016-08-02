@@ -22,9 +22,27 @@ var Balloon = {
         this.balloonInflater.TempoLimite(ballon);
         this.balloonInflater.ClicarFechar(ballon);
 
-        this.balloonInflater.container.append(ballon);
+        this.balloonInflater.AdicionarAoContainer(ballon);        
         this.balloonInflater.AnimarTimeOut(ballon);
         return ballon;
+    },
+    success: function (msg, options) {
+        this.inflate(msg, "success", options);
+    },
+    info: function (msg, options) {
+        this.inflate(msg, "info", options);
+    },
+    warning: function (msg, options) {
+        this.inflate(msg, "warning", options);
+    },
+    danger: function (msg, options) {
+        this.inflate(msg, "danger", options);
+    },
+    primary: function (msg, options) {
+        this.inflate(msg, "primary", options);
+    },
+    balloon: function (msg, options) {
+        this.inflate(msg, "balloon", options);
     },
 
     balloonInflater: {
@@ -49,8 +67,9 @@ var Balloon = {
             clickToClose: true, // when click remove ballon
             carregando: true, // loading bar active
             titulo: '', // title,
-            removalAnimation:false, // animate when removed
-            useImage: false
+            removalAnimation: true, // animate when removed
+            addAnimation: true,
+            useImage: false // user image or not
         },
 
         configuracao: {},
@@ -67,6 +86,17 @@ var Balloon = {
         ContainerPosition: function () {
             this.container.addClass('balloon-' + this.configuracao.position_x)
             this.container.addClass('balloon-' + this.configuracao.position_y)
+        },
+        AdicionarAoContainer: function (balloon) { 
+            var needtoAdd = this.configuracao.addAnimation
+
+            if (toBoolean(needtoAdd)) {
+                $(balloon).hide().appendTo(this.container).fadeIn('slow');
+                //this.container.append(balloon).fadeIn('slow');
+            } else {
+                this.container.append(balloon);                
+            }
+
         },
 
         AdicionarMenssagem: function (ballon, message){
@@ -151,7 +181,9 @@ var Balloon = {
                 $(balloon).remove();
                 
             } else {
-                
+                balloon.fadeOut('slow', function () {
+                    $(balloon).remove();                    
+                });
             }
 
             if ($(cont).children().length < 1) {
@@ -203,24 +235,6 @@ var Balloon = {
             }
 
         }
-    },
-    success: function (msg, options) {
-        this.inflate(msg, "success", options);
-    },
-    info: function (msg, options) {
-        this.inflate(msg, "info", options);
-    },
-    warning: function (msg, options) {
-        this.inflate(msg, "warning", options);
-    },
-    danger: function (msg, options) {
-        this.inflate(msg, "danger", options);
-    },
-    primary: function (msg, options) {
-        this.inflate(msg, "primary", options);
-    },
-    balloon: function (msg, options) {
-        this.inflate(msg, "balloon", options);
     }
 }
 
