@@ -2,6 +2,7 @@
     <head>
         <title>Balloon</title>
         <meta charset="UTF-8">
+        <meta name="" content="">
         <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
@@ -41,7 +42,7 @@
                 var js, fjs = d.getElementsByTagName(s)[0];
                 if (d.getElementById(id)) {return;}
                 js = d.createElement(s); js.id = id;
-                js.src = "//connect.facebook.net/pt-br/sdk.js";
+                js.src = "//connect.facebook.net/en_US/sdk.js";
                 fjs.parentNode.insertBefore(js, fjs);
             }(document, 'script', 'facebook-jssdk'));
         </script>
@@ -56,13 +57,6 @@
                         Balloon
                         <div class="col-lg-3 pull-right" style="text-align:right;">
                             <!--Facebook-->
-                            <div
-                                class="fb-like"
-                                data-share="true"
-                                data-width="450"
-                                data-show-faces="true">
-                            </div>
-
                             <div class="fb-share-button" data-href="http://balloonalerts.azurewebsites.net/" 
                             data-layout="button" data-size="small" data-mobile-iframe="true" style="display:inline">
                                 <a class="fb-xfbml-parse-ignore" target="_blank" 
