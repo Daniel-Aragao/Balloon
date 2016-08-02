@@ -136,19 +136,98 @@
                         <div class="clearfix"></div>
                         <div>
                             <h1>Como usar</h1>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod lobortis rhoncus. Sed non tortor vel ipsum porttitor rhoncus sit amet quis odio. Cras semper at lorem quis rutrum. Vestibulum finibus dui eros, vel rutrum ipsum convallis a. Donec imperdiet odio      sagittis est cursus, sit amet fringilla lorem scelerisque. Vivamus ac condimentum quam. Praesent eget pharetra nibh, eget condimentum nibh. Cras eget lacus a arcu dignissim pretium sed sed libero.</p>
-                            <p>Nam viverra lorem massa, nec finibus sapien fringilla vel. Ut porttitor placerat porttitor. Vestibulum sed blandit dui, a ullamcorper dolor. Aliquam tempus tristique sagittis. In finibus metus nec lacinia venenatis. Sed eu congue felis, et tempor turpis. Maecenas sagittis rutrum ex ac congue. Ut et massa eros.</p>      
-                            <p>Nullam vitae magna faucibus, mattis massa at, euismod mi. Ut consequat quam ut quam convallis auctor. Ut sodales blandit felis, nec interdum est feugiat id. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam erat volutpat. Mauris elementum aliquam dui, ac blandit sem fermentum in. Quisque ultrices, neque ac accumsan mollis, sapien leo rutrum urna, id suscipit ante sapien eget orci. Morbi commodo felis id metus accumsan rutrum. Mauris neque orci, mattis ac velit non, blandit dignissim neque. Mauris et suscipit nunc.</p>                      
+                            <ul style="list-style-type:decimal-leading-zero;">
+                                <li>Baixe balloon.js e chame-o de sua página</li> <br>
+
+                                <li>Baixe balloon.css e chame-o da mesma página</li> <br>
+
+                                <li>Após executar a página chame pelos métodos
+                                    <ul style="list-style-type:lower-alpha;">
+                                        <li><b>Balloon.success(mensagem,opcoes)</b>  ou <b>Balloon['success'](mensagem,opcoes)</b></li>
+                                        <li><b>Balloon.info(mensagem,opcoes)</b> ou <b>Balloon['info'](mensagem,opcoes)</b></li>
+                                        <li><b>Balloon.warning(mensagem,opcoes)</b> ou <b>Balloon['warning'](mensagem,opcoes)</b></li>
+                                        <li><b>Balloon.danger(mensagem,opcoes)</b> ou <b>Balloon['danger'](mensagem,opcoes)</b></li>
+                                        <li><b>Balloon.primary(mensagem,opcoes)</b> ou <b>Balloon['primary'](mensagem,opcoes)</b></li>
+                                        <li><b>Balloon.balloon(mensagem,opcoes)</b> ou <b>Balloon['balloon'](mensagem,opcoes)</b></li>
+                                        <li><b>Balloon.inflate(mensagem,tipo_personalizado,opcoes)</b> ou <b>Balloon['inflate'](mensagem, tipo_personalizado,opcoes)</b></li>
+                                    </ul>
+                                    <br>
+                                    <span>Obs.: O parâmetro "tipo_personalizado" adicionará a classe balloon-tipo_personalizado para o alerta de acordo com o tipo especificado.
+                                        Para adicionar uma imagem para o tipo personalizado deve-se passar a url da imagem na propriedade "opcoes.imageUrl".
+                                    </span>
+                                    <br>
+                                    <span>Obs.2: O parâmetro "opcoes" é sempre opcional.</span>
+                                </li> <br>
+
+                                <li>Adicione suas "opcoes" personalizadas no parâmetro "opcoes", ou subscreva o objeto "Balloon.default_options" para alterar as opções globais
+                                    <br><br>
+                                    Obs.: o parâmetro "opcoes" sempre tem prioridade sob o objeto "Balloon.default_options"
+                                    <br>
+                                    Obs.2: Em "opcoes" só é necessário anunciar os atributos desejados e com o mesmo nome que foram anunciados no objeto de opções padrão
+                                </li>
+                                <br>
+                                <li>Para mais dúvidas envie um e-mail com o assunto Balloon para <a>danielfilhoce@gmail.com</a></li>
+                            </ul>                   
                         </div>
                         <div class="jumbotron">
-                            <h1>Alertas JavaScript - Versões</h1>
-                            <p>1.0.0: 28/07/2016</p>
-                            <p>Timeout 1.0.1: 29/07/2016</p>
-                            <p>Refatorado 1.1.1: 29/07/2016</p>
-                            <p>Loading-bar 1.2.1 30/07/2016</p>
-                            <p>Título 1.2.2 31/07/2016</p>
-                            <p>FadeIn/Out 1.2.3 01/08/2016</p>
-                            <p>Daniel Aragão Abreu Filho</p>
+                            <h1>Balloon</h1>
+                            <h2>Alertas JavaScript</h2>
+                            <p>Balloon é um código javascript que permite criar alertas com facilidade para o seu projeto, 
+                                onde podem ser emitidos erros, notificações e outras respostas/feedbacks para o usuário</p>
+
+                            <h4>Versões: </h4>
+                            <table class="table table-condensed" style="color:black;">
+                                <thead>
+                                    <tr>
+                                        <th>Título</th>
+                                        <th>Versão</th>
+                                        <th>Data</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Início</td>
+                                        <td>1.0.0</td>
+                                        <td>28/07/2016</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Timeout</td>
+                                        <td>1.0.1</td>
+                                        <td>29/07/2016</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Refatorado</td>
+                                        <td>1.1.1</td>
+                                        <td>29/07/2016</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Loading-bar</td>
+                                        <td>1.2.1</td>
+                                        <td>30/07/2016</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Título</td>
+                                        <td>1.2.2</td>
+                                        <td>31/07/2016</td>
+                                    </tr>
+                                    <tr>
+                                        <td>FadeIn/Out</td>
+                                        <td>1.2.3</td>
+                                        <td>01/08/2016</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Imagens</td>
+                                        <td>1.3.0</td>
+                                        <td>02/08/2016</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Como usar</td>
+                                        <td>1.3.0</td>
+                                        <td>02/08/2016</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p>Desenvolvedor: Daniel Aragão Abreu Filho</p>
                             <div>
                                 <a href="https://github.com/Daniel-Aragao/Balloon.git">
                                     <img src="Images/GitHub-Mark-32px.png">
@@ -176,7 +255,7 @@
                 option.removalAnimation = $('input[name=removalAnimation]:checked').val();
                 option.addAnimation = $('input[name=addAnimation]:checked').val(); 
 
-                Balloon.inflate($('#Menssagem').val(), null, option);                
+                Balloon['inflate']($('#Menssagem').val(), null, option);                
             }
             function reset(){    
                 if ($("#balloon-container").length != 0) {

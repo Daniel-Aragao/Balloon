@@ -70,7 +70,13 @@ var Balloon = {
             removalAnimation: true, // animate when removed
             addAnimation: true,
             useImage: false, // user image or not
-            imageUrl: 'Images/seta.png' // local da imagem
+            imageUrl: '', // local da imagem
+            imagePrimary: 'http://balloonalerts.azurewebsites.net/Images/seta.png',
+            imageSuccess: 'http://balloonalerts.azurewebsites.net/Images/Correto.png',
+            imageWarning: 'http://balloonalerts.azurewebsites.net/Images/exclamacao.png',
+            imageInfo: 'http://balloonalerts.azurewebsites.net/Images/info.png',
+            imageDanger: 'http://balloonalerts.azurewebsites.net/Images/errado.png',
+            imageBalloon:'http://balloonalerts.azurewebsites.net/Images/balloon.png'
         },
 
         configuracao: {},
@@ -105,7 +111,7 @@ var Balloon = {
 
             if(toBoolean(this.configuracao.useImage)){
                 ballon.css("padding", "14px 14px 14px 54px");
-                ballon.css("background-image", "url("+this.configuracao.imageUrl+")");
+                ballon.css("background-image", "url("+ this.configuracao.imageUrl+")");
             }
 
         },
@@ -226,27 +232,27 @@ var Balloon = {
             switch (btype) {
                 case "success":
                     balloon.addClass("balloon-success");
-                    this.configuracao.imageUrl = 'Images/Correto.png'
+                    this.configuracao.imageUrl = this.configuracao.imageSuccess;
                     break;
                 case "info":
                     balloon.addClass("balloon-info");
-                    this.configuracao.imageUrl = 'Images/info.png'
+                    this.configuracao.imageUrl = this.configuracao.imageInfo;
                     break;
                 case "warning":
                     balloon.addClass("balloon-warning");
-                    this.configuracao.imageUrl = 'Images/exclamacao.png'
+                    this.configuracao.imageUrl = this.configuracao.imageWarning;
                     break;
                 case "danger":
                     balloon.addClass("balloon-danger");
-                    this.configuracao.imageUrl = 'Images/errado.png'
+                    this.configuracao.imageUrl = this.configuracao.imageDanger;
                     break;
                 case "primary":
                     balloon.addClass("balloon-primary");
-                    this.configuracao.imageUrl = 'Images/seta.png'
+                    this.configuracao.imageUrl = this.configuracao.imagePrimary;
                     break;
                 case "balloon":
                     balloon.addClass("balloon-balloon");
-                    this.configuracao.imageUrl = 'Images/balloon.png'
+                    this.configuracao.imageUrl = this.configuracao.imageBalloon;
                     break;
                 default:
                     break;
