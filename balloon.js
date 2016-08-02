@@ -176,18 +176,23 @@ var Balloon = {
         RemoveBalloon: function (balloon) {
             var config = Balloon.balloonInflater.configuracao.removalAnimation;
             var cont = Balloon.balloonInflater.container;
+            var RemoveContainer = Balloon.balloonInflater.RemoveContainer;
 
             if (!toBoolean(config)) {
                 $(balloon).remove();
-                
+                RemoveContainer(cont);
             } else {
                 balloon.fadeOut('slow', function () {
-                    $(balloon).remove();                    
+                    $(balloon).remove();
+                    RemoveContainer(cont);
                 });
             }
 
-            if ($(cont).children().length < 1) {
-                $(cont).remove();
+            
+        },
+        RemoveContainer: function (container) { 
+            if ($(container).children().length < 1) {
+                $(container).remove();
             }
         },
 
