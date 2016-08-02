@@ -14,38 +14,7 @@
         </script>
         <link rel="icon" href="favicon.ico">
         <link rel="stylesheet" href="CSS/balloon.css">
-        <style>
-            body.blackballoon{
-                background-color: #2a2730;
-                color: #fff;
-            }
-            #Menssagem, #Timeout{
-                width: 150px;
-                padding:10px;
-                display: inline;
-            }
-            #btn, #btn2{
-                margin-bottom:3px;
-            }
-            .padd{
-                padding-right: 5px;
-                padding-left: 5px;
-            }
-            .opcao-box{
-                border: 1px solid #2a2730;
-                padding: 5px;
-                margin: 5px;
-            }
-            .white-square{
-                width: 300px;
-                height: 70px;
-                background-color: white;
-                position: relative;
-            }
-            #jumb{
-                padding-top:20px;
-            }
-        </style>
+        <link rel="stylesheet" href="CSS/Site.css">
     </head>
     <body class="blackballoon">
         <div class="col-lg-8 col-lg-offset-2">
@@ -61,18 +30,12 @@
                             </a>                                
                         </div>
                     </div>
-                    <div class="panel-body" style="padding-top:0;">
-                        <div class="col-lg-12" style="padding:5px">
-                            <div>
-                                
-
-                            </div>
-                        </div>
+                    <div class="panel-body" style="padding-top:10px;">
                         <div class="col-lg-12">
                             <input type="text" placeholder="Mensagem" id="Menssagem" class="form-control">
                             <input type="text" placeholder="Tempo Limite" id="Timeout" class="form-control">
                             (msec.)                                
-                            <button id="btn" class="btn btn-primary" type="button" onClick="startballoon()">Cria balões</button>
+                            <button id="btn" class="btn btn-primary" type="button" onClick="startballoon()">Cria balão</button>
                             <button id="btn2" class="btn btn-danger" type="button" onClick="reset()">Resetar balões</button>
                         </div>
                         <div class="col-lg-6">
@@ -137,6 +100,17 @@
                             </div>
                         </div>
                         <div class="clearfix"></div>
+
+                        <div>
+                            <h1>Configuração
+                                <button class="btn btn-primary" type="button" onClick="startballoon()">Cria balão</button>
+                            </h1>
+                            <div class="config-section">
+                                
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+
                         <div>
                             <h1>Como usar</h1>
                             <ul style="list-style-type:decimal-leading-zero;">
