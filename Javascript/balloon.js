@@ -1,6 +1,3 @@
-
-
-
 var Balloon = {    
 
     inflate: function(msg, btype, options) {
@@ -58,7 +55,7 @@ var Balloon = {
             }
         },
 
-        default_options: { // for no option selected
+        default_options: { // when no option is selected
             position_x: 'top', //screen position
             position_y: 'right', //screen position
             type: 'primary', // bootstrap same types
