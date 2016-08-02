@@ -65,7 +65,7 @@ var Balloon = {
             closeButton: false, // no close btn
             timeOut: 0, //no time out
             clickToClose: true, // when click remove ballon
-            carregando: true, // loading bar active
+            carregando: 'full', // loading bar active: none/full/bottom/top
             titulo: '', // title,
             removalAnimation: true, // animate when removed
             addAnimation: true,
@@ -122,7 +122,7 @@ var Balloon = {
         },
 
         TempoLimite: function (balloon) {
-            if (this.configuracao.timeOut != 0 && !toBoolean(this.configuracao.carregando)) {
+            if (this.configuracao.timeOut != 0 && this.configuracao.carregando == 'none') {
                 var balloonRemover = this.RemoveBalloon;
                 var tempo = this.configuracao.timeOut;
 
@@ -143,9 +143,28 @@ var Balloon = {
         },
         AnimarTimeOut: function (balloon) { 
             if (this.configuracao.timeOut != 0) {
-                if (toBoolean(this.configuracao.carregando)) {
+                if (this.configuracao.carregando != 'none') {
                     var bar = $('<div class="loading-bar""></div>');
                     balloon.append(bar);
+
+                    if (this.configuracao.carregando != 'full') {
+                        bar.css('position','absolute');
+                        bar.css('height', '4px');
+                        bar.css('opacity', '0.5');                        
+                    }                    
+                    
+                    switch (this.configuracao.carregando) {
+                        case 'full':
+                            bar.css('height','100%');
+                            break;
+                        case 'top':
+                            bar.css('top', '0');
+                            break;
+                        case 'bottom':
+                            bar.css('bottom', '0');
+                            break;
+                    }
+
 
                     var time = this.configuracao.timeOut;
                     var balloonRemover = this.RemoveBalloon;
