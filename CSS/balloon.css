@@ -75,7 +75,7 @@
     word-break: break-all;
 }
 
-.closeBtn{
+.balloon-closeBtn{
     color: white;
     padding: 0;
     /*text-shadow: 0 1px 0 white;*/
@@ -93,12 +93,12 @@
     z-index: 99999;
 }
 
-.closeBtn:hover{
+.balloon-closeBtn:hover{
     color: #adadad;
     /*text-shadow: 0 1px 0 #adadad;*/
 }
 
-.loading-bar{
+.balloon-loading-bar{
      height:100%;
      width:100%;
      background-color:#000;
@@ -108,7 +108,7 @@
      left:0;
      display: block;
 }
-.title-bar{
+.balloon-title-bar{
     width: 100%;
     background-color: transparent;
     /*position: absolute;

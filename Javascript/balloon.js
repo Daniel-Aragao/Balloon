@@ -118,7 +118,7 @@ var Balloon = (function (){
         AdicionarCloseBtn: function (ballon) {
         
             if (toBoolean(this.configuracao.closeButton)) {
-                var btn = $('<div class="closeBtn">x</div>');
+                var btn = $('<div class="balloon-closeBtn">x</div>');
                 var balloonRemover = this.RemoveBalloon;
                 btn.on('click', function () {
                     balloonRemover(ballon);
@@ -151,7 +151,7 @@ var Balloon = (function (){
         AnimarTimeOut: function (balloon) { 
             if (this.configuracao.timeOut != 0) {
                 if (this.configuracao.carregando != 'none') {
-                    var bar = $('<div class="loading-bar""></div>');
+                    var bar = $('<div class="balloon-loading-bar""></div>');
                     balloon.append(bar);
 
                     if (this.configuracao.carregando != 'full') {
@@ -194,7 +194,7 @@ var Balloon = (function (){
         AdicionarTitle: function (balloon) { 
             var titulo = this.configuracao.titulo
             if (titulo) {
-                var element = $('<div class="title-bar"></div>');
+                var element = $('<div class="balloon-title-bar"></div>');
                 element.text(titulo);
                 balloon.append(element);
             }
