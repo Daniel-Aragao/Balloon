@@ -1,58 +1,46 @@
-var Balloon = {    
+var Balloon = (function (){
+    var Balloon = {    
 
-    inflate: function(msg, btype, options) {
-        this.balloonInflater.SetConfiguration(options);
+        inflate: function(msg, btype, options) {
+            balloonInflater.SetConfiguration(options);
 
-        this.balloonInflater.CreateContainer();
-        
-        var ballon = $('<div class="balloon"></div>');
-        var message = $('<div class="balloon-message"></div>');
-        message.text(msg);
+            balloonInflater.CreateContainer();
+            
+            var ballon = $('<div class="balloon"></div>');
+            var message = $('<div class="balloon-message"></div>');
+            message.text(msg);
 
-        this.balloonInflater.AdicionarClasses(btype, ballon);
+            balloonInflater.AdicionarClasses(btype, ballon);
 
-        this.balloonInflater.AdicionarCloseBtn(ballon)
-        this.balloonInflater.AdicionarTitle(ballon);
+            balloonInflater.AdicionarCloseBtn(ballon)
+            balloonInflater.AdicionarTitle(ballon);
 
-        this.balloonInflater.AdicionarMenssagem(ballon, message);      
+            balloonInflater.AdicionarMenssagem(ballon, message);      
 
-        this.balloonInflater.TempoLimite(ballon);
-        this.balloonInflater.ClicarFechar(ballon);
+            balloonInflater.TempoLimite(ballon);
+            balloonInflater.ClicarFechar(ballon);
 
-        this.balloonInflater.AdicionarAoContainer(ballon);        
-        this.balloonInflater.AnimarTimeOut(ballon);
-        return ballon;
-    },
-    success: function (msg, options) {
-        this.inflate(msg, "success", options);
-    },
-    info: function (msg, options) {
-        this.inflate(msg, "info", options);
-    },
-    warning: function (msg, options) {
-        this.inflate(msg, "warning", options);
-    },
-    danger: function (msg, options) {
-        this.inflate(msg, "danger", options);
-    },
-    primary: function (msg, options) {
-        this.inflate(msg, "primary", options);
-    },
-    balloon: function (msg, options) {
-        this.inflate(msg, "balloon", options);
-    },
-
-    balloonInflater: {
-        container: null,
-
-        CreateContainer: function () {
-            this.container = $("#balloon-container");
-        
-            if (this.container.length === 0) {
-                this.container = $('<div id="balloon-container"></div>')
-                this.ContainerPosition();
-                $('body').append(this.container);
-            }
+            balloonInflater.AdicionarAoContainer(ballon);        
+            balloonInflater.AnimarTimeOut(ballon);
+            return ballon;
+        },
+        success: function (msg, options) {
+            this.inflate(msg, "success", options);
+        },
+        info: function (msg, options) {
+            this.inflate(msg, "info", options);
+        },
+        warning: function (msg, options) {
+            this.inflate(msg, "warning", options);
+        },
+        danger: function (msg, options) {
+            this.inflate(msg, "danger", options);
+        },
+        primary: function (msg, options) {
+            this.inflate(msg, "primary", options);
+        },
+        balloon: function (msg, options) {
+            this.inflate(msg, "balloon", options);
         },
 
         default_options: { // when no option is selected
@@ -74,7 +62,21 @@ var Balloon = {
             imageInfo: 'http://balloonalerts.azurewebsites.net/Images/info.png',
             imageDanger: 'http://balloonalerts.azurewebsites.net/Images/errado.png',
             imageBalloon:'http://balloonalerts.azurewebsites.net/Images/balloon.png'
+        }
+    }
+    balloonInflater = {
+        container: null,
+
+        CreateContainer: function () {
+            this.container = $("#balloon-container");
+        
+            if (this.container.length === 0) {
+                this.container = $('<div id="balloon-container"></div>')
+                this.ContainerPosition();
+                $('body').append(this.container);
+            }
         },
+
 
         configuracao: {},
     
@@ -198,9 +200,9 @@ var Balloon = {
             }
         },
         RemoveBalloon: function (balloon) {
-            var config = Balloon.balloonInflater.configuracao.removalAnimation;
-            var cont = Balloon.balloonInflater.container;
-            var RemoveContainer = Balloon.balloonInflater.RemoveContainer;
+            var config = balloonInflater.configuracao.removalAnimation;
+            var cont = balloonInflater.container;
+            var RemoveContainer = balloonInflater.RemoveContainer;
 
             if (!toBoolean(config)) {
                 $(balloon).remove();
@@ -258,12 +260,12 @@ var Balloon = {
 
         SetConfiguration: function (options) {
             if (isNullOrUndefined(options)) {
-                options = this.default_options;
+                options = Balloon.default_options;
             }
 
-            for (var attr in this.default_options) { this.configuracao[attr] = this.default_options[attr]; }
+            for (var attr in Balloon.default_options) { this.configuracao[attr] = Balloon.default_options[attr]; }
 
-            if (this.default_options != options) {
+            if (Balloon.default_options != options) {
                 for (var attr in options) {
                     if (!isNullOrUndefined(options[attr])) this.configuracao[attr] = options[attr];
                 }
@@ -271,21 +273,23 @@ var Balloon = {
 
         }
     }
-}
 
-function toBoolean(variavel) {
-    if (variavel === true || variavel === false) return !!variavel;
+    function toBoolean(variavel) {
+        if (variavel === true || variavel === false) return !!variavel;
 
-    switch (variavel) {
-        case "True": case "true": case "TRUE": return true;
-        case "False": case "false": case "FALSE": return false;       
+        switch (variavel) {
+            case "True": case "true": case "TRUE": return true;
+            case "False": case "false": case "FALSE": return false;       
+        }
     }
-}
 
 
-function isNullOrUndefined(variavel) {
-    if (typeof variavel == "undefined" || !variavel) {
-        return true;
+    function isNullOrUndefined(variavel) {
+        if (typeof variavel == "undefined" || !variavel) {
+            return true;
+        }
+        return false;
     }
-    return false;
-}
+
+    return Balloon;
+})();

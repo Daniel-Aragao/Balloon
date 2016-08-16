@@ -31,9 +31,8 @@ function UpdateConfigSection(option) {
     new_section.append('<span>var option = {</span><br>')
 
     for (var key in option) {
-        console.log(key + ' ' + option[key])
         if (option[key] == "") {
-            new_section.append('<span>&#160&#160&#160&#160&#160&#160' + key + ' = ' + Balloon.balloonInflater.default_options[key] + ',</span><br>');
+            new_section.append('<span>&#160&#160&#160&#160&#160&#160' + key + ' = ' + Balloon.default_options[key] + ',</span><br>');
         } else {
             new_section.append('<span>&#160&#160&#160&#160&#160&#160' + key + ' = ' + option[key] + ',</span><br>');            
         }
